@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./../views/Home.vue";
+import Sales from "./../views/Sales.vue";
+import Setup from "./../views/Setup.vue";
 // import DriverRoutes from "./drivers";
 
 Vue.use(Router);
@@ -12,16 +14,15 @@ export default new Router({
             name: "Home",
             component: Home
         },
-        // {
-        //   path: "/about",
-        //   name: "about",
-        //   // route level code-splitting
-        //   // this generates a separate chunk (about.[hash].js) for this route
-        //   // which is lazy-loaded when the route is visited.
-        //   component: () =>
-        //     import(/* webpackChunkName: "about" */ "./../views/About.vue")
-        // },
-        // ...AuthRoutes,
-        // ...DriverRoutes
+        {
+            path: "/sales",
+            name: "Sales",
+            component: Sales
+        },
+        {
+            path: "/setup",
+            name: "Setup",
+            component: Setup
+        }
     ]
 });

@@ -35,14 +35,6 @@
                 return this.$store.getters.drawer;
             }
         },
-        created() {
-            if (!this.loggedInUser) this.$router.replace("/");
-        },
-        data() {
-            return {
-                currentUser: this.loggedInUser
-            };
-        },
         methods: {
             change(e) {
                 this.$store.commit("updateDrawer", e);
@@ -52,9 +44,6 @@
             "requires-store": Boolean,
             "requires-warehouse": Boolean
         },
-        updated() {
-            if (!this.loggedInUser) this.$router.replace("/");
-        }
     };
 
 </script>

@@ -50,6 +50,11 @@ Vue.mixin({
         return {
             alert: this.$store.getters.alert,
             formRules: {
+                aboveZeroRules: [
+                    v =>
+                    (v && parseInt(v) > 0) ||
+                    "Not a valid amount."
+                ],
                 amountRules: [
                     v =>
                     (v && !!v.toString().match(/^\d+(\.{1}\d{0,8})?$/)) ||
