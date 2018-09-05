@@ -20,3 +20,6 @@ Auth::routes();
 Route::post('/auth/login', 'AjaxLoginController@login');
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/sales', 'SalesController@index')->name('sales');
+Route::get('/setup', 'SetupController@index')->name('setup');
+Route::post('/setup', 'SetupController@saveSettings');
