@@ -289,8 +289,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2092,26 +2090,46 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-list",
+                { attrs: { dense: "" } },
                 [
                   _c(
                     "v-list-tile",
-                    { attrs: { avatar: "", dark: "", to: "/profile" } },
                     [
-                      _c("v-list-tile-avatar", [
-                        _c("img", {
-                          attrs: {
-                            src: "/static/img/default_thumb.jpg",
-                            alt: ""
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
                       _c(
                         "v-list-tile-content",
                         [
-                          _c("v-list-tile-title", [
-                            _vm._v(_vm._s(_vm.user.firstName))
-                          ])
+                          _c(
+                            "v-form",
+                            { attrs: { action: "/logout", method: "post" } },
+                            [
+                              _c(
+                                "v-layout",
+                                { attrs: { row: "", wrap: "" } },
+                                [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { sm12: "" } },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            type: "submit",
+                                            flat: "",
+                                            block: ""
+                                          }
+                                        },
+                                        [_vm._v("Log out")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
@@ -2122,26 +2140,7 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("v-divider"),
-              _vm._v(" "),
-              _c(
-                "v-list",
-                [
-                  _c(
-                    "v-list-tile",
-                    { attrs: { to: "/logout" } },
-                    [
-                      _c("v-list-tile-title", [
-                        _vm._v(
-                          "\n                        Log out\n                    "
-                        )
-                      ])
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
+              _c("v-list")
             ],
             1
           )
@@ -3424,7 +3423,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_App_vue__ = __webpack_require__("./resources/assets/js/components/App.vue");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router_index__ = __webpack_require__("./resources/assets/js/router/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__("./resources/assets/js/router/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store__ = __webpack_require__("./resources/assets/js/store.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuetify__ = __webpack_require__("./node_modules/vuetify/dist/vuetify.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vuetify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vuetify__);
@@ -3691,7 +3690,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.mixin({
 });
 
 new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
-    router: __WEBPACK_IMPORTED_MODULE_3__router_index__["a" /* default */],
+    router: __WEBPACK_IMPORTED_MODULE_3__router__["a" /* default */],
     store: __WEBPACK_IMPORTED_MODULE_4__store__["a" /* default */],
     render: function render(h) {
         return h(__WEBPACK_IMPORTED_MODULE_2__components_App_vue___default.a);
