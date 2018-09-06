@@ -26,3 +26,4 @@ Route::get('/api/setup', 'SetupController@getSettings');
 Route::post('/api/setup', 'SetupController@saveSettings');
 Route::get('/api/sales', 'SalesController@getSales');
 Route::post('/api/sales', 'SalesController@addSale');
+Route::get('/api/stats/all', 'StatsController@all');

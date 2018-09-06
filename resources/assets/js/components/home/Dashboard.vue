@@ -41,9 +41,9 @@
             },
             badgeData() {
                 return [
+                    this.dashData.totalVendingToday,
                     this.dashData.totalVending,
                     this.dashData.vendingAmount,
-                    this.dashData.cars,
                 ];
             },
             dashboardStats() {
@@ -102,7 +102,7 @@
                     }
                 },
                 dashData: {
-                    totalVending: {
+                    totalVendingToday: {
                         title: "Total vending (last 5)",
                         icon: "user",
                         content: "0",
@@ -110,7 +110,7 @@
                         bgColor: "#F44336",
                         footer: "Total"
                     },
-                    vendingAmount: {
+                    totalVending: {
                         title: "Total vending (today)",
                         icon: "users",
                         content: "0",
@@ -118,7 +118,7 @@
                         bgColor: "#FF9800",
                         footer: "Total"
                     },
-                    cars: {
+                    vendingAmount: {
                         title: "Total Amount (today)",
                         icon: "car",
                         content: "0",
@@ -140,10 +140,10 @@
                 }
 
                 try {
-                    const res = await this.$http.get(`/stats/all`)
+                    const res = await this.$http.get(`/api/stats/all`)
                     await this.handleResponse(res, data => {
                         if (typeof res == "object") {
-                            return this.updatedashboardStats(data.stats)
+                            return this.updatedashboardStats(data)
                         }
                     })
                 } catch (error) {
@@ -151,9 +151,9 @@
                 }
             },
             updatedashboardStats(stats) {
-                this.dashData.totalVending.content = stats.users
-                this.dashData.vendingAmount.content = stats.vendingAmount
-                this.dashData.cars.content = `${stats.cars.live} / ${stats.cars.all}`
+                this.dashData.totalVendingToday.content = stats.vending_today
+                this.dashData.totalVending.content = stats.vending_today
+                this.dashData.vendingAmount.content = '₦ ' + stats.amount
             }
         },
         mounted() {
