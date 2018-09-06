@@ -1,15 +1,17 @@
 <template>
     <div>
         <layout>
-            <h3>Hello!!</h3>
+            <dashboard></dashboard>
         </layout>
     </div>
 </template>
 
 <script>
     import Layout from './../components/Layout'
+    import Dashboard from './../components/home/Dashboard.vue'
     export default {
         components: {
+            Dashboard,
             Layout
         }
     }
