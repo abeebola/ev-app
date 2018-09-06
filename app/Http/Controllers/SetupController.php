@@ -14,6 +14,18 @@ class SetupController extends Controller
         $this->middleware('auth');
     }
 
+    public function getSettings(Request $request){
+        $settings = Setting::find(1);
+        if (! $settings || empty($settings)){
+            return response()->json([
+                'total_energy_vendable' => 0,
+                'price_per_kwh' => 0
+            ], 200);
+        }
+
+        return response()->json(json_decode($settings->value), 200);
+    }
+
     public function saveSettings(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -26,7 +38,7 @@ class SetupController extends Controller
         }
 
         $settings = Setting::findOrNew(1); // There's only one settings entry
-        // $settings->id = 1; // There's only one settings entry
+        $settings->id = 1; // There's only one settings entry
         $settings->value = json_encode([
             'total_energy_vendable' => $request->input('totalEnergy'),
             'price_per_kwh' => $request->input('price')

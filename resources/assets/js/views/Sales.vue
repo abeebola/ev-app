@@ -1,6 +1,8 @@
 <template>
     <layout>
-        Sales!!!
+        <v-layout row wrap>
+            hi
+        </v-layout>
     </layout>
 </template>
 

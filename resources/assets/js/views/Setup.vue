@@ -6,11 +6,11 @@
                     <v-layout row wrap>
                         <v-flex sm12>
                             <v-text-field required :rules="formRules.aboveZeroRules" label="Total Energy Vendable (TEV)"
-                                type="number" min="0" step="1" v-model="settings.totalEnergy"></v-text-field>
+                                type="number" min="0" step="1" v-model="settings.totalEnergy" :loading="!loaded"></v-text-field>
                         </v-flex>
                         <v-flex sm12>
                             <v-text-field required :rules="formRules.aboveZeroRules" label="Price per KWh" type="number"
-                                min="0" step="0.01" v-model="settings.price"></v-text-field>
+                                min="0" step="0.01" v-model="settings.price" :loading="!loaded"></v-text-field>
                         </v-flex>
                         <v-flex sm12>
                             <v-layout>
@@ -38,8 +38,12 @@
                 return this.posting ? 'Saving...' : 'Save Settings'
             }
         },
+        async created() {
+            await this.getSettings()
+        },
         data() {
             return {
+                loaded: false,
                 posting: false,
                 settings: {
                     price: 0.00,
@@ -48,12 +52,27 @@
             }
         },
         methods: {
+            async getSettings() {
+                try {
+                    const res = await this.$http.get('/api/setup')
+                    this.loaded = true
+                    this.handleResponse(res, data => {
+                        this.settings = Object.assign({}, {
+                            price: data.price_per_kwh,
+                            totalEnergy: data.total_energy_vendable
+                        })
+                    })
+                } catch (error) {
+                    this.loaded = true
+                    this.handleError(error, "We couldn't get your settings. Please try again later.")
+                }
+            },
             async saveSettings() {
                 if (!this.$refs.settings_form.validate()) return
                 this.posting = true
                 const settings = Object.assign({}, this.settings)
                 try {
-                    const res = await this.$http.post('/setup', settings)
+                    const res = await this.$http.post('/api/setup', settings)
                     this.posting = false
                     this.handleResponse(res, data => console.log(data))
                     this.showSnackbar('Settings saved successfully.')
