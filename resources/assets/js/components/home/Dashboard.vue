@@ -74,7 +74,7 @@
                             ],
                             datasets: [{
                                 label: "Total vending",
-                                backgroundColor: "#4caf50",
+                                backgroundColor: ["#4caf50", "#ff9800", "#03A9F4"],
                                 data: [40, 30, 15]
                             }]
                         },
@@ -153,7 +153,7 @@
             updatedashboardStats(stats) {
                 this.dashData.totalVendingToday.content = stats.vending_today
                 this.dashData.totalVending.content = stats.vending_today
-                this.dashData.vendingAmount.content = '₦ ' + stats.amount
+                this.dashData.vendingAmount.content = '₦ ' + parseFloat(stats.amount).toFixed(2)
             }
         },
         mounted() {
