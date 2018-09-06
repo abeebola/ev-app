@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSettingsTable extends Migration
+class CreateSalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('total_energy_vendable', 8,2);
-            $table->double('price_per_kwh', 8,2);
+            $table->string('meter_number', 100);
+            $table->double('energy_vended', 8, 2);
+            $table->double('price', 8, 2);
+            $table->double('amount', 8, 4);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('sales');
     }
 }

@@ -137,13 +137,16 @@ Vue.mixin({
             return chars;
         },
         momentFormat(dateTime) {
-            return this.$moment(dateTime).format("DD/MM/YYYY");
+            return this.$moment(dateTime).format("DD/MM/YYYY HH:mm:ss");
         },
         niceDateFormat(dateTime) {
             return this.$moment(dateTime).format("DD MMM YYYY");
         },
         fullDateFormat(dateTime) {
             return this.$moment(dateTime).format("DD MMM YYYY HH:mm");
+        },
+        getNow() {
+            return this.$moment().format("DD/MM/YYYY HH:mm:ss");
         },
         getToday() {
             return this.$moment().format("DD/MM/YYYY");

@@ -23,7 +23,7 @@ class SetupController extends Controller
             ], 200);
         }
 
-        return response()->json(json_decode($settings->value), 200);
+        return response()->json($settings, 200);
     }
 
     public function saveSettings(Request $request)
@@ -39,11 +39,8 @@ class SetupController extends Controller
 
         $settings = Setting::findOrNew(1); // There's only one settings entry
         $settings->id = 1; // There's only one settings entry
-        $settings->value = json_encode([
-            'total_energy_vendable' => $request->input('totalEnergy'),
-            'price_per_kwh' => $request->input('price')
-        ]);
-        
+        $settings->total_energy_vendable = $request->input('totalEnergy');
+        $settings->price_per_kwh = $request->input('price');      
         $settings->save();
 
         return response()->json($settings, 201);
